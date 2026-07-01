@@ -1440,7 +1440,7 @@
 
   <header id="siteHeader">
     <div class="nav-inner">
-      <a href="#top" class="logo"><span class="logo-mark">DK</span> Dennis K. Muriithi</a>
+      <a href="#top" class="logo"><span class="logo-mark">DK</span> DKMuriithi</a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -2162,7 +2162,7 @@
           </div>
 
           <form class="reveal" id="contactForm">
-            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            <input type="hidden" name="access_key" value="a8d9187c-0a89-451f-80c7-ed887fa4e747">
             <div class="form-row">
               <div class="form-field">
                 <label for="fname">Name</label>
@@ -2184,9 +2184,7 @@
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send
               Message</button>
-            <p class="form-note">This form opens your email client with the message pre-filled. To send messages
-              directly without an email client, connect an EmailJS service ID, template ID and public key inside
-              script.js.</p>
+
           </form>
         </div>
       </div>
@@ -2422,7 +2420,7 @@
 
     // ---------- Contact form ----------
     const contactForm = document.getElementById('contactForm');
-    
+
     // Create a response message element dynamically
     const formResponse = document.createElement('p');
     formResponse.style.marginTop = '14px';
@@ -2431,7 +2429,7 @@
 
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalBtnText = submitBtn.textContent;
       submitBtn.textContent = 'Sending...';
@@ -2444,30 +2442,30 @@
         method: 'POST',
         body: formData
       })
-      .then(async (response) => {
-        let json = await response.json();
-        if (response.status == 200) {
-          formResponse.style.color = 'var(--teal)';
-          formResponse.textContent = "Message sent successfully!";
-          contactForm.reset();
-        } else {
-          console.error(response);
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+            formResponse.style.color = 'var(--teal)';
+            formResponse.textContent = "Message sent successfully!";
+            contactForm.reset();
+          } else {
+            console.error(response);
+            formResponse.style.color = 'var(--terracotta)';
+            formResponse.textContent = json.message || "Something went wrong!";
+          }
+        })
+        .catch(error => {
+          console.error(error);
           formResponse.style.color = 'var(--terracotta)';
-          formResponse.textContent = json.message || "Something went wrong!";
-        }
-      })
-      .catch(error => {
-        console.error(error);
-        formResponse.style.color = 'var(--terracotta)';
-        formResponse.textContent = "Something went wrong!";
-      })
-      .then(() => {
-        submitBtn.textContent = originalBtnText;
-        submitBtn.disabled = false;
-        setTimeout(() => {
-          formResponse.textContent = '';
-        }, 5000);
-      });
+          formResponse.textContent = "Something went wrong!";
+        })
+        .then(() => {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+          setTimeout(() => {
+            formResponse.textContent = '';
+          }, 5000);
+        });
     });
 
     // ---------- Footer year ----------
