@@ -1,0 +1,13 @@
+# Environment variables (do not commit)
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# System/IDE configs
+.vscode/
+.idea/
+.gemini/
