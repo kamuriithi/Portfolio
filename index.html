@@ -1,0 +1,2478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dennis K. Muriithi — Statistician &amp; Data Scientist, Chuka University</title>
+  <meta name="description"
+    content="Dennis K. Muriithi (PhD Biostatistics) is an Associate Professor and Lead Data Scientist at Chuka University's Center for Data Analytics &amp; Modeling, building explainable machine learning systems for clinical and public health decision-support across Kenya.">
+  <meta name="keywords"
+    content="Dennis Muriithi, Biostatistics, Machine Learning, Explainable AI, Malaria Prediction, Chuka University, CDAM, Kenya, Public Health, R Shiny, Streamlit">
+  <meta name="author" content="Dennis K. Muriithi">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cdam.chuka.ac.ke/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dennis K. Muriithi — Statistician &amp; Data Scientist">
+  <meta property="og:description"
+    content="PhD Biostatistics. Associate Professor and Lead Data Scientist, CDAM, Chuka University. Explainable ML for malaria, cardiovascular and diabetes risk prediction across Kenya.">
+  <meta property="og:image" content="assets/profile.jpg">
+  <meta property="og:url" content="https://cdam.chuka.ac.ke/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dennis K. Muriithi — Statistician &amp; Data Scientist">
+  <meta name="twitter:description"
+    content="Associate Professor and Lead Data Scientist, CDAM, Chuka University. Explainable ML for public health across Kenya.">
+  <meta name="twitter:image" content="assets/profile.jpg">
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B6E5C'/%3E%3Cpath d='M12 44 L22 24 L32 38 L42 18 L52 30' stroke='%23F1F4EF' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+    type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dennis K. Muriithi",
+  "jobTitle": "Associate Professor of Applied Statistics; Lead Data Scientist",
+  "worksFor": {
+    "@type": "CollegeOrUniversity",
+    "name": "Chuka University",
+    "department": "Center for Data Analytics & Modeling (CDAM)"
+  },
+  "alumniOf": [
+    {"@type": "CollegeOrUniversity", "name": "Moi University"},
+    {"@type": "CollegeOrUniversity", "name": "Jomo Kenyatta University of Agriculture and Technology"},
+    {"@type": "CollegeOrUniversity", "name": "Egerton University"}
+  ],
+  "email": "mailto:dkariuki@chuka.ac.ke",
+  "url": "https://cdam.chuka.ac.ke/",
+  "sameAs": [
+    "https://www.linkedin.com/in/dennis-k-muriithi-6768414a/",
+    "https://github.com/kamuriithi"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Chuka",
+    "addressCountry": "KE"
+  }
+}
+</script>
+
+  <style>
+    :root {
+      --ink: #122019;
+      --ink-soft: #3c4a43;
+      --paper: #F1F4EF;
+      --paper-raised: #FFFFFF;
+      --line: #D8DDD3;
+      --line-strong: #B9C1B3;
+      --teal: #0B6E5C;
+      --teal-deep: #084A3F;
+      --teal-tint: #E1F0EC;
+      --terracotta: #C1592E;
+      --terracotta-tint: #F7E7DE;
+      --gold: #C79A3D;
+      --panel: #0E1B16;
+      --panel-text: #E9ECE5;
+      --panel-line: #28362F;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --radius: 10px;
+      --maxw: 1180px;
+    }
+
+    [data-theme="dark"] {
+      --ink: #E9ECE5;
+      --ink-soft: #B7C0B7;
+      --paper: #0C1712;
+      --paper-raised: #122019;
+      --line: #243128;
+      --line-strong: #344339;
+      --teal: #3FBFA1;
+      --teal-deep: #8FDFC9;
+      --teal-tint: #132923;
+      --terracotta: #E68855;
+      --terracotta-tint: #2A1B12;
+      --gold: #E0B75C;
+      --panel: #070E0B;
+      --panel-text: #E9ECE5;
+      --panel-line: #1D2924;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background .35s ease, color .35s ease;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--teal);
+      display: inline-block;
+    }
+
+    .section {
+      padding: 104px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 3.4vw, 40px);
+    }
+
+    .section-head p {
+      color: var(--ink-soft);
+      font-size: 17px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      padding: 13px 22px;
+      border-radius: 6px;
+      border: 1px solid var(--ink);
+      cursor: pointer;
+      background: transparent;
+      color: var(--ink);
+      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #F1F4EF;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-deep);
+      border-color: var(--teal-deep);
+    }
+
+    .btn-ghost:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ---------- NAV ---------- */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--teal);
+      z-index: 1000;
+      width: 0%;
+      transition: width .1s linear;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s ease, background .3s ease;
+    }
+
+    header.scrolled {
+      border-bottom-color: var(--line);
+    }
+
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      background: var(--teal);
+      color: #F1F4EF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--ink-soft);
+      padding: 4px 0;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--ink);
+    }
+
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      background: var(--teal);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .theme-toggle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: none;
+      color: var(--ink);
+    }
+
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    .menu-toggle svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .mobile-panel {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      z-index: 895;
+      padding: 20px 32px 30px;
+    }
+
+    .mobile-panel.open {
+      display: block;
+    }
+
+    .mobile-panel a {
+      display: block;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      padding: 172px 0 96px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: block;
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      padding: 5px 12px;
+      color: var(--ink-soft);
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 5.6vw, 66px);
+      line-height: 1.02;
+    }
+
+    .hero h1 span {
+      color: var(--teal);
+    }
+
+    .type-line {
+      font-family: var(--font-mono);
+      font-size: clamp(15px, 1.7vw, 19px);
+      color: var(--ink-soft);
+      margin: 20px 0 22px;
+      min-height: 26px;
+    }
+
+    .type-line .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--teal);
+      margin-left: 2px;
+      vertical-align: -2px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .hero-summary {
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin-bottom: 34px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .hero-ledger {
+      display: flex;
+      gap: 34px;
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+    }
+
+    .hero-ledger div {
+      border-left: 2px solid var(--teal);
+      padding-left: 12px;
+    }
+
+    .hero-ledger .num {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .hero-ledger .lbl {
+      font-size: 11.5px;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+
+    .hero-portrait {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contour-svg {
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      left: -25%;
+      top: -25%;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    .contour-svg path {
+      fill: none;
+      stroke: var(--teal);
+      stroke-width: 1;
+      opacity: 0.4;
+    }
+
+    .contour-svg path:nth-child(2) {
+      stroke: var(--gold);
+      opacity: .3;
+    }
+
+    .contour-svg path:nth-child(3) {
+      stroke: var(--terracotta);
+      opacity: .25;
+    }
+
+    .portrait-frame {
+      position: relative;
+      z-index: 1;
+      width: 300px;
+      height: 340px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      box-shadow: 8px 8px 0 var(--teal-tint);
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .portrait-chip {
+      position: absolute;
+      z-index: 2;
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+    }
+
+    .chip-1 {
+      top: -14px;
+      right: -30px;
+    }
+
+    .chip-2 {
+      bottom: 14px;
+      left: -40px;
+    }
+
+    @media(max-width:640px) {
+      .chip-1 {
+        right: -4px;
+      }
+
+      .chip-2 {
+        left: -4px;
+      }
+    }
+
+    /* ---------- REVEAL ---------- */
+    /* Visible by default so content always shows even if JS fails to run.
+   JS opts elements into the fade-in effect by adding .pre on load. */
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.pre {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .reveal.pre.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 64px;
+    }
+
+    .about-body p {
+      color: var(--ink-soft);
+      font-size: 16.5px;
+      margin: 0 0 18px;
+    }
+
+    .about-body strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .fact-card {
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 26px;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      gap: 16px;
+    }
+
+    .fact-row:last-child {
+      border-bottom: none;
+    }
+
+    .fact-row .k {
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .fact-row .v {
+      text-align: right;
+      font-weight: 500;
+    }
+
+    .fact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .fact-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      transition: border-color .2s, background .2s;
+    }
+
+    .fact-links a:hover {
+      border-color: var(--teal);
+      background: var(--teal-tint);
+    }
+
+    .fact-links svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: var(--teal);
+    }
+
+    /* ---------- SKILLS ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .skill-card {
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .skill-card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .skill-card .idx {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--teal);
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .chip-list span {
+      font-size: 12.5px;
+      font-family: var(--font-mono);
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      padding: 5px 9px;
+      color: var(--ink-soft);
+    }
+
+    /* ---------- TIMELINE ---------- */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      border-left: 1px solid var(--line-strong);
+    }
+
+    .tl-item {
+      position: relative;
+      padding-bottom: 40px;
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -33px;
+      top: 4px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 2px solid var(--paper);
+    }
+
+    .tl-year {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--teal);
+      letter-spacing: .03em;
+    }
+
+    .tl-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 6px 0 3px;
+      font-family: var(--font-display);
+    }
+
+    .tl-org {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      margin-bottom: 10px;
+    }
+
+    .tl-desc {
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+
+    .tl-desc ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    .tl-desc li {
+      margin-bottom: 5px;
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .edu-card {
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .edu-card .yr {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--teal);
+    }
+
+    .edu-card h4 {
+      font-size: 16.5px;
+      margin: 8px 0 4px;
+    }
+
+    .edu-card p {
+      color: var(--ink-soft);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* ---------- GRANTS / PUBS ---------- */
+    .ledger-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+    }
+
+    .ledger-table th {
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--ink-soft);
+      padding: 0 0 12px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .ledger-table td {
+      padding: 16px 14px 16px 0;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      color: var(--ink-soft);
+    }
+
+    .ledger-table td:first-child {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .ledger-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .amt {
+      font-family: var(--font-mono);
+      color: var(--teal-deep);
+      white-space: nowrap;
+    }
+
+    .pub-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pub-item {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pub-item:last-child {
+      border-bottom: none;
+    }
+
+    .pub-idx {
+      font-family: var(--font-mono);
+      color: var(--teal);
+      font-size: 13px;
+      flex-shrink: 0;
+      width: 32px;
+    }
+
+    .pub-title {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .pub-meta {
+      color: var(--ink-soft);
+      font-size: 13.5px;
+      font-style: italic;
+    }
+
+    /* ---------- STATS ---------- */
+    .stats-section {
+      background: var(--panel);
+      color: var(--panel-text);
+      border-bottom: 1px solid var(--panel-line);
+    }
+
+    .stats-section .eyebrow {
+      color: var(--gold);
+    }
+
+    .stats-section .eyebrow::before {
+      background: var(--gold);
+    }
+
+    .stats-section .section-head p {
+      color: #AEB8AE;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--panel-line);
+      border: 1px solid var(--panel-line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .stat-card {
+      background: var(--panel);
+      padding: 30px 24px;
+    }
+
+    .stat-num {
+      font-family: var(--font-mono);
+      font-size: 38px;
+      font-weight: 600;
+      color: #F1F4EF;
+    }
+
+    .stat-num .suffix {
+      font-size: 20px;
+      color: var(--gold);
+    }
+
+    .stat-lbl {
+      font-size: 13px;
+      color: #AEB8AE;
+      margin-top: 8px;
+    }
+
+    /* ---------- PROJECTS ---------- */
+    .filter-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--line-strong);
+      background: none;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .08);
+    }
+
+    .project-shot {
+      position: relative;
+      overflow: hidden;
+      background: var(--teal-tint);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px;
+      align-self: stretch;
+    }
+
+    .project-shot img {
+      width: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .10);
+      transition: transform .5s ease;
+      flex-shrink: 0;
+    }
+
+    .shot-caption {
+      font-size: 12px;
+      color: var(--ink-soft);
+      font-family: var(--font-body);
+      line-height: 1.55;
+      padding: 16px 4px 0;
+      text-align: center;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .project-card:hover .project-shot img {
+      transform: scale(1.02);
+    }
+
+    .project-body {
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 10px;
+    }
+
+    .project-body h3 {
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .project-body p {
+      color: var(--ink-soft);
+      font-size: 14.8px;
+      margin: 0 0 16px;
+    }
+
+    .project-stats {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .project-stats div {
+      font-family: var(--font-mono);
+    }
+
+    .project-stats .n {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--teal-deep);
+    }
+
+    .project-stats .l {
+      font-size: 10.5px;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+    }
+
+    .project-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      font-size: 13.8px;
+      color: var(--ink-soft);
+    }
+
+    .project-features li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .project-features li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    .tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+
+    .tech-row span {
+      font-size: 11.5px;
+      font-family: var(--font-mono);
+      background: var(--teal-tint);
+      color: var(--teal-deep);
+      padding: 4px 9px;
+      border-radius: 5px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .project-links a {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      transition: .2s;
+    }
+
+    .project-links a:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .project-links svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    @media(max-width:860px) {
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 64px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-row .ic {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: var(--teal-tint);
+      color: var(--teal-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-row .ic svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .contact-row .lbl {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .contact-row .val {
+      font-size: 15px;
+      margin-top: 2px;
+    }
+
+    .contact-row a.val:hover {
+      color: var(--teal);
+    }
+
+    .form-field {
+      margin-bottom: 18px;
+    }
+
+    .form-field label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: var(--paper-raised);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 14.5px;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      outline: 2px solid var(--teal);
+      outline-offset: 1px;
+      border-color: var(--teal);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-note {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-top: 14px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--panel);
+      color: var(--panel-text);
+      padding: 64px 0 30px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--panel-line);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo .logo-mark {
+      background: var(--gold);
+      color: #1a1305;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #8B9587;
+      margin-bottom: 14px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: #D6DBD1;
+      margin-bottom: 9px;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 26px;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 13px;
+      color: #8B9587;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+    }
+
+    .footer-socials a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--panel-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-socials svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .back-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease, transform .3s ease;
+      z-index: 500;
+      border: none;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .back-top:hover {
+      transform: translateY(-3px);
+    }
+
+    .back-top svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    @media(max-width:980px) {
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:640px) {
+      .wrap {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero {
+        padding: 140px 0 64px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <header id="siteHeader">
+    <div class="nav-inner">
+      <a href="#top" class="logo"><span class="logo-mark">DK</span> Dennis K. Muriithi</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="4.5" />
+            <path
+              d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8"
+              stroke-linecap="round" />
+          </svg>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-tags">
+          <span class="tag">PhD · Biostatistics</span>
+          <span class="tag">Chuka University · CDAM</span>
+          <span class="tag">Kenya</span>
+        </div>
+        <h1>Dennis K. <span>Muriithi</span></h1>
+        <div class="type-line"><span id="typedText">Statistician</span><span class="cursor"></span></div>
+        <p class="hero-summary">Associate Professor of Applied Statistics and Lead Data Scientist at the Center for Data
+          Analytics &amp; Modeling, Chuka University. I build explainable machine-learning systems — malaria,
+          cardiovascular and diabetes risk models — that turn clinical and public-health data into decisions people can
+          act on.</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+          <a href="assets/Dennis_K_Muriithi_CV.pdf" class="btn btn-ghost" target="_blank" rel="noopener">View CV</a>
+        </div>
+        <div class="hero-ledger">
+          <div>
+            <div class="num">52</div>
+            <div class="lbl">Publications</div>
+          </div>
+          <div>
+            <div class="num">35</div>
+            <div class="lbl">Scholars Supervised</div>
+          </div>
+          <div>
+            <div class="num">14</div>
+            <div class="lbl">Int'l Conferences</div>
+          </div>
+          <div>
+            <div class="num">$85K</div>
+            <div class="lbl">Research Grants</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Field note — About</div>
+          <h2>Statistics, applied to what matters</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-body reveal">
+            <p>I hold a <strong>PhD in Biostatistics</strong> from Moi University and an <strong>MSc in Applied
+                Statistics</strong> from JKUAT. Since October 2023 I have served as <strong>Associate Professor of
+                Applied Statistics</strong> at Chuka University, where I coordinate the PhD programme in Applied
+              Statistics and lead the <strong>Center for Data Analytics &amp; Modeling (CDAM)</strong> — a research hub
+              I built to bridge statistical theory and deployable machine learning.</p>
+            <p>My work sits at the intersection of <strong>applied statistics, machine learning and AI
+                integration</strong>, with recurring applications in healthcare, agriculture, education and social
+              sciences. In practice, that means comparing classical statistical models against ML classifiers, then
+              wrapping the winner in explainable-AI tooling — SHAP attributions, risk-stratification tiers, and
+              conversational assistants — so the output is legible to a clinician or policymaker, not just a data
+              scientist.</p>
+            <p>Before academia, I trained as a <strong>Certified Public Accountant (CPA-K)</strong>, which still shapes
+              how I think about grant budgets, reproducibility and audit trails in research. I currently serve as an
+              <strong>ACU Ambassador</strong> for the Association of Commonwealth Universities and as a member of the
+              <strong>International Biometric Society</strong> and the <strong>Applied Malaria Modeling Network
+                (AMMnet)</strong>.
+            </p>
+            <p>What I'm building toward: a small but growing library of open, explainable clinical decision-support
+              dashboards — for malaria, cardiovascular disease and diabetes so far — designed specifically for
+              resource-constrained health settings in Kenya and the wider region.</p>
+          </div>
+          <div class="fact-card reveal">
+            <div class="fact-row"><span class="k">Role</span><span class="v">Assoc. Professor &amp; Lead Data
+                Scientist</span></div>
+            <div class="fact-row"><span class="k">Institution</span><span class="v">Chuka University · CDAM</span></div>
+            <div class="fact-row"><span class="k">Location</span><span class="v">Chuka, Kenya</span></div>
+            <div class="fact-row"><span class="k">PhD</span><span class="v">Biostatistics, Moi University '18</span>
+            </div>
+            <div class="fact-row"><span class="k">Memberships</span><span class="v">IBS · AMMnet · ACU</span></div>
+            <div class="fact-links">
+              <a href="mailto:dkariuki@chuka.ac.ke">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 7l9 6 9-6" />
+                </svg>
+                dkariuki@chuka.ac.ke
+              </a>
+              <a href="https://www.linkedin.com/in/dennis-k-muriithi-6768414a/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <path d="M7 10v7M7 7v.01M12 17v-4.5a2 2 0 0 1 4 0V17M12 17v-7" stroke-linecap="round" />
+                </svg>
+                linkedin.com/in/dennis-k-muriithi
+              </a>
+              <a href="https://github.com/kamuriithi" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path
+                    d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" />
+                </svg>
+                github.com/kamuriithi
+              </a>
+              <a href="https://scholar.google.com/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3z" />
+                  <path d="M5 10.5V16c0 1.5 3 3 7 3s7-1.5 7-3v-5.5" stroke-linecap="round" />
+                </svg>
+                Google Scholar profile
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Field note — Toolkit</div>
+          <h2>Skills &amp; instruments</h2>
+          <p>The statistical foundation and the applied ML stack I use to move from raw data to a dashboard a clinician
+            can trust.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card reveal">
+            <div class="idx">01 / Statistics &amp; languages</div>
+            <h3>Statistical analysis</h3>
+            <div class="chip-list">
+              <span>R / RStudio</span><span>Python</span><span>SPSS</span><span>SQL</span>
+              <span>Hypothesis testing</span><span>Response surface methodology</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <div class="idx">02 / Machine learning</div>
+            <h3>ML &amp; explainable AI</h3>
+            <div class="chip-list">
+              <span>Logistic Regression</span><span>Random Forest</span><span>SVM</span><span>KNN</span>
+              <span>Naive Bayes</span><span>XGBoost</span><span>SHAP</span><span>Deep learning</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <div class="idx">03 / Dashboards &amp; visualization</div>
+            <h3>Applied delivery</h3>
+            <div class="chip-list">
+              <span>R Shiny</span><span>Streamlit</span><span>Power BI</span><span>Tableau</span>
+              <span>Spatial risk mapping</span><span>HTML / JS</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <div class="idx">04 / AI integration</div>
+            <h3>Generative AI</h3>
+            <div class="chip-list">
+              <span>Claude API</span><span>Groq / Llama 3.3</span><span>Conversational clinical assistants</span>
+              <span>Prompt engineering</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <div class="idx">05 / Research practice</div>
+            <h3>Research &amp; supervision</h3>
+            <div class="chip-list">
+              <span>Grant writing</span><span>Thesis supervision</span><span>Peer review</span>
+              <span>Scientific writing</span><span>Multidisciplinary research</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <div class="idx">06 / Engineering</div>
+            <h3>Tools &amp; workflow</h3>
+            <div class="chip-list">
+              <span>Git / GitHub</span><span>Posit Connect Cloud</span><span>.Renviron config</span>
+              <span>Reproducible pipelines</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Field note — Career</div>
+          <h2>Experience</h2>
+        </div>
+        <div class="timeline">
+          <div class="tl-item reveal">
+            <div class="tl-year">Oct 2023 — Current</div>
+            <div class="tl-title">Associate Professor of Applied Statistics</div>
+            <div class="tl-org">Chuka University, Kenya</div>
+            <div class="tl-desc">
+              <ul>
+                <li>Teach and evaluate undergraduate and postgraduate students; set, moderate and mark examinations.
+                </li>
+                <li>Supervise undergraduate and postgraduate research; coordinate the PhD programme in Applied
+                  Statistics.</li>
+                <li>Develop funded research proposals and lead CDAM's applied ML research agenda.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="tl-year">Sep 2020 — Sep 2023</div>
+            <div class="tl-title">Academic Leader, BSc Applied Statistics</div>
+            <div class="tl-org">Garissa University, Kenya</div>
+            <div class="tl-desc">Led curriculum delivery and academic administration for the Applied Statistics
+              undergraduate programme.</div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="tl-year">Jan 2018 — Current</div>
+            <div class="tl-title">Internal Examiner, PhD &amp; MSc Thesis</div>
+            <div class="tl-org">Chuka University</div>
+            <div class="tl-desc">Evaluate postgraduate dissertations and coursework against university grading policy.
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="tl-year">2016 — 2018</div>
+            <div class="tl-title">Peer Reviewer Member</div>
+            <div class="tl-org">American Journal of Theoretical &amp; Applied Statistics</div>
+            <div class="tl-desc">Reviewed submitted manuscripts for methodological rigor prior to publication.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Field note — Foundation</div>
+          <h2>Education &amp; credentials</h2>
+        </div>
+        <div class="edu-grid">
+          <div class="edu-card reveal">
+            <div class="yr">2018</div>
+            <h4>PhD, Biostatistics</h4>
+            <p>Moi University, Eldoret, Kenya</p>
+          </div>
+          <div class="edu-card reveal">
+            <div class="yr">2011</div>
+            <h4>MSc, Applied Statistics</h4>
+            <p>Jomo Kenyatta University of Agriculture and Technology (JKUAT), Nairobi, Kenya</p>
+          </div>
+          <div class="edu-card reveal">
+            <div class="yr">2009</div>
+            <h4>Certified Public Accountant (CPA-K)</h4>
+            <p>KASNEB, Nairobi, Kenya</p>
+          </div>
+          <div class="edu-card reveal">
+            <div class="yr">2007</div>
+            <h4>BSc (Honours)</h4>
+            <p>Egerton University, Nakuru, Kenya</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Field note — Research</div>
+          <h2>Grants &amp; selected publications</h2>
+          <p>A sample of active research funding and recent peer-reviewed output across malaria modeling, explainable
+            AI, mental health and agricultural statistics.</p>
+        </div>
+        <h3 style="font-size:18px;margin-bottom:20px;" class="reveal">Research &amp; travel grants</h3>
+        <div style="overflow-x:auto;" class="reveal">
+          <table class="ledger-table">
+            <thead>
+              <tr>
+                <th>Grant</th>
+                <th>Role</th>
+                <th>Period</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AMMnet Travel Grant Award - Annual AMMnet meeting/training held in Dakar, Senegal, June 25-27,
+                  Basics: Introduction to R and data visualization</td>
+                <td>Trainer</td>
+                <td>2025</td>
+                <td class="amt">Full air ticket &amp; accommodation</td>
+              </tr>
+              <tr>
+                <td>AMMnet — Malaria Risk Prediction in Kenya using AI &amp; ML in R</td>
+                <td>Lead Applicant</td>
+                <td>2025</td>
+                <td class="amt">$3,000</td>
+              </tr>
+              <tr>
+                <td>AMMnet — Training Workshop on Malaria Modeling Software</td>
+                <td>Lead Applicant</td>
+                <td>2024</td>
+                <td class="amt">$3,000</td>
+              </tr>
+              <tr>
+                <td>CU Support Project — CDAM short courses, consultancy &amp; research hub</td>
+                <td>Project Lead</td>
+                <td>2024</td>
+                <td class="amt">Internally Funded</td>
+              </tr>
+              <tr>
+                <td>Full Scholarship — Food Systems Resilience Project (3 PhD, 2 MSc)</td>
+                <td>Supervisor</td>
+                <td>2023 – 2029</td>
+                <td class="amt">Full sponsorship</td>
+              </tr>
+              <tr>
+                <td>TU Internal Grant — Biodiesel &amp; Glycerol from Mango Seed Oil (RSM)</td>
+                <td>Co-Principal Investigator</td>
+                <td>2023 – 2025</td>
+                <td class="amt">KShs 200,000</td>
+              </tr>
+              <tr>
+                <td>CU Internal Grant — Cucumber growth parameters &amp; yield (RSM/CCD)</td>
+                <td>Principal Investigator</td>
+                <td>2022 – 2024</td>
+                <td class="amt">KShs 700,000</td>
+              </tr>
+              <tr>
+                <td>Full Scholarship — Kenya Climate Smart Agriculture Project (KCSAP)</td>
+                <td>Supervisor</td>
+                <td>2019 – 2023</td>
+                <td class="amt">Full sponsorship</td>
+              </tr>
+              <tr>
+                <td>CU Internal Grant — Watermelon response to organic manure (RSM)</td>
+                <td>Principal Investigator</td>
+                <td>2016 – 2017</td>
+                <td class="amt">KShs 200,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="font-size:18px;margin:56px 0 12px;" class="reveal">Selected publications</h3>
+        <ol class="pub-list reveal">
+          <li class="pub-item">
+            <span class="pub-idx">[01]</span>
+            <div>
+              <div class="pub-title">Explainable Artificial Intelligence for Predicting Malaria Risk in Kenya</div>
+              <div class="pub-meta">Muriithi, D.K., Lumumba, V.W., Awe, O.O. &amp; Mwangi, D. (2025). EJ-AI, 4(1), 1–8.
+              </div>
+            </div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-idx">[02]</span>
+            <div>
+              <div class="pub-title">Evaluating the Performance of Selected Single Classifiers with Incorporated
+                Explainable AI (XAI) in the Prediction of Mental Health Distress Among University Students</div>
+              <div class="pub-meta">Lumumba, V.W., Muriithi, D.K. &amp; Oundo, M. (2025). AJAI, 9(2), 133–144.</div>
+            </div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-idx">[03]</span>
+            <div>
+              <div class="pub-title">Factors Associated with Psychological Distress in Mothers and Girls in Kenya: A
+                Baseline Analysis</div>
+              <div class="pub-meta">Monicah, N., Kaimenyi, C., Muriithi, D.K., Gordon, T. &amp; Gust, D.A. (2025). ASFI
+                Research Journal, 2(1), 1–19.</div>
+            </div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-idx">[04]</span>
+            <div>
+              <div class="pub-title">A Machine Learning-Based Prediction of Malaria Occurrence in Kenya</div>
+              <div class="pub-meta">Muriithi, D.K., Lumumba, V.W. &amp; Okongo, O.M. (2024). IAJTAS, 13(4), 65–72.</div>
+            </div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-idx">[05]</span>
+            <div>
+              <div class="pub-title">Forecasting Outpatient Visits at Marimanti Level 4 Hospital: Time Series Analysis
+                Using Sarima Model</div>
+              <div class="pub-meta">Rono, K.K., Muriithi, D.K. &amp; Mwangi, D.M. (2024). IOSR Journal of Mathematics,
+                20(5), 35–43.</div>
+            </div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-idx">[06]</span>
+            <div>
+              <div class="pub-title">Analyzing the Determinants and Extent of Crop Diversification Among Smallholder
+                Coffee Farmers in Kirinyaga County, Kenya</div>
+              <div class="pub-meta">Micheni, P.K., Gathungu, G.K. &amp; Muriithi, D.K. (2024). J. Agribus. Rural Dev.,
+                2(72), 201–217.</div>
+            </div>
+          </li>
+        </ol>
+        <p class="form-note reveal">52 total publications in internationally refereed journals. Full list available on
+          Google Scholar.</p>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="wrap section" style="border-bottom:none;padding-top:96px;padding-bottom:96px;">
+        <div class="section-head reveal">
+          <div class="eyebrow">Field note — Track record</div>
+          <h2>Achievements at a glance</h2>
+        </div>
+        <div class="stats-grid reveal">
+          <div class="stat-card">
+            <div class="stat-num" data-count="52">52</div>
+            <div class="stat-lbl">Journal publications</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-count="35">35</div>
+            <div class="stat-lbl">PhD &amp; MSc scholars supervised</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-count="14">14</div>
+            <div class="stat-lbl">International conferences</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num"><span data-count="85">85</span><span class="suffix">K</span></div>
+            <div class="stat-lbl">USD in research grants</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-count="20">20</div>
+            <div class="stat-lbl">Top researcher rank, Chuka University</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-count="9">9</div>
+            <div class="stat-lbl">Active research grants led</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-count="3">3</div>
+            <div class="stat-lbl">Explainable ML dashboards shipped</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-count="18">18</div>
+            <div class="stat-lbl">Years in statistics &amp; research</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Field note — Applied ML</div>
+          <h2>Featured projects</h2>
+          <p>Explainable clinical decision-support dashboards, built end-to-end from dataset to deployed application,
+            for CDAM's public-health research agenda.</p>
+        </div>
+        <div class="filter-row reveal">
+          <button class="filter-btn active" data-filter="all">All projects</button>
+          <button class="filter-btn" data-filter="shiny">R Shiny</button>
+          <button class="filter-btn" data-filter="streamlit">Streamlit</button>
+        </div>
+        <div class="projects-grid" id="projectsGrid">
+
+          <div class="project-card reveal" data-cat="shiny">
+            <div class="project-shot">
+              <img src="assets/malariaai.png"
+                alt="MalariaAI Kenya dashboard overview showing prevalence by endemic zone and diagnostic test performance"
+                loading="lazy">
+              <p class="shot-caption">Early-detection dashboard for malaria risk across 15 Kenya counties — spatial
+                mapping, model comparison, patient-level prediction, and a Claude-powered clinical AI assistant.</p>
+            </div>
+            <div class="project-body">
+              <div class="project-tag">R Shiny · Spatial Epidemiology</div>
+              <h3>MalariaAI Kenya</h3>
+              <p>An early-detection and decision-support framework for malaria, covering a synthetic surveillance
+                dataset of 100,000 records across 15 counties and 4 endemic zones. Combines model comparison, spatial
+                risk mapping, patient-level prediction and an integrated alert system.</p>
+              <div class="project-stats">
+                <div>
+                  <div class="n">100K</div>
+                  <div class="l">Records</div>
+                </div>
+                <div>
+                  <div class="n">15</div>
+                  <div class="l">Counties</div>
+                </div>
+                <div>
+                  <div class="n">17.1%</div>
+                  <div class="l">Prevalence</div>
+                </div>
+                <div>
+                  <div class="n">39</div>
+                  <div class="l">Features</div>
+                </div>
+              </div>
+              <ul class="project-features">
+                <li>Spatial risk mapping across endemic zones with prevalence and diagnostic performance views</li>
+                <li>Model training and comparison workflow for outbreak-relevant classifiers</li>
+                <li>Patient-level prediction tool with a clinical alert system</li>
+                <li>Claude-powered AI assistant tab for clinical report generation</li>
+              </ul>
+              <div class="tech-row"><span>R Shiny</span><span>Random Forest</span><span>SVM</span><span>Naive
+                  Bayes</span><span>Claude API</span><span>Spatial mapping</span></div>
+              <div class="project-links">
+                <a href="https://connect.posit.cloud/kamuriithi2011/content/019efef2-bbca-9cab-da8b-3bdaaff113dd"
+                  target="_blank" rel="noopener">Live demo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+                <a href="https://github.com/kamuriithi" target="_blank" rel="noopener">Repository
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card reveal" data-cat="shiny">
+            <div class="project-shot">
+              <img src="assets/cardiopredict.png"
+                alt="CardioPredict AI dashboard showing ROC-AUC, accuracy and risk category framework" loading="lazy">
+              <p class="shot-caption">Clinical decision-support platform for coronary artery disease detection — three
+                models compared head-to-head with SHAP-based explainability and a Groq-powered AI assistant.</p>
+            </div>
+            <div class="project-body">
+              <div class="project-tag">R Shiny · Explainable AI</div>
+              <h3>CardioPredict AI</h3>
+              <p>A clinical decision-support platform for early detection of coronary artery disease, built on the
+                Cleveland Heart Disease dataset. Three models are compared head-to-head, with SHAP-based explainability
+                giving patient-level transparency into every prediction.</p>
+              <div class="project-stats">
+                <div>
+                  <div class="n">0.877</div>
+                  <div class="l">Best ROC-AUC</div>
+                </div>
+                <div>
+                  <div class="n">79.7%</div>
+                  <div class="l">Best accuracy</div>
+                </div>
+                <div>
+                  <div class="n">0.778</div>
+                  <div class="l">Best F1</div>
+                </div>
+                <div>
+                  <div class="n">13</div>
+                  <div class="l">Predictors</div>
+                </div>
+              </div>
+              <ul class="project-features">
+                <li>Logistic Regression, KNN and SVM compared on AUC, accuracy and F1</li>
+                <li>Custom base-R Monte Carlo SHAP implementation for patient-level explanations</li>
+                <li>Four-tier clinical risk stratification framework</li>
+                <li>Groq-powered (Llama 3.3 70B) AI assistant for clinical explanations and reports</li>
+              </ul>
+              <div class="tech-row"><span>R Shiny</span><span>Logistic
+                  Regression</span><span>KNN</span><span>SVM</span><span>SHAP</span><span>Groq API</span></div>
+              <div class="project-links">
+                <a href="https://connect.posit.cloud/kamuriithi2011/content/019ee06c-5c77-b770-d200-84c5eaf5eb1d"
+                  target="_blank" rel="noopener">Live demo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+                <a href="https://github.com/kamuriithi/Heart-disease-xai" target="_blank" rel="noopener">Repository
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card reveal" data-cat="streamlit">
+            <div class="project-shot">
+              <img src="assets/diabetesai.png"
+                alt="DiabetesAI dashboard showing best ROC-AUC, model leaderboard and risk stratification"
+                loading="lazy">
+              <p class="shot-caption">Diabetes-risk screening dashboard combining SHAP-based explainable AI with
+                four-tier risk stratification — turning probability scores into clinically actionable insight.</p>
+            </div>
+            <div class="project-body">
+              <div class="project-tag">Streamlit · Clinical Decision Support</div>
+              <h3>DiabetesAI Project</h3>
+              <p>A diabetes-risk screening dashboard combining predictive modeling with SHAP-based explainable AI, so
+                probability scores translate directly into clinically meaningful, actionable insight.</p>
+              <div class="project-stats">
+                <div>
+                  <div class="n">0.893</div>
+                  <div class="l">Best ROC-AUC</div>
+                </div>
+                <div>
+                  <div class="n">84.8%</div>
+                  <div class="l">Best accuracy</div>
+                </div>
+                <div>
+                  <div class="n">0.760</div>
+                  <div class="l">Best F1</div>
+                </div>
+                <div>
+                  <div class="n">8</div>
+                  <div class="l">Clinical features</div>
+                </div>
+              </div>
+              <ul class="project-features">
+                <li>Logistic Regression, SVM and KNN leaderboard ranked by AUC, accuracy, F1 and recall</li>
+                <li>Clinical feature dictionary mapping each input to its diagnostic role</li>
+                <li>Four-tier risk stratification with recommended clinical action per band</li>
+              </ul>
+              <div class="tech-row"><span>Streamlit</span><span>Logistic
+                  Regression</span><span>SVM</span><span>KNN</span><span>SHAP</span><span>scikit-learn</span></div>
+              <div class="project-links">
+                <a href="https://kamuriithi-diabetesai-project-zlbcyzoj9qeqq695h33g4ha.streamlit.app/" target="_blank"
+                  rel="noopener">Live demo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+                <a href="https://github.com/kamuriithi/DiabetesAI-Project" target="_blank" rel="noopener">Repository
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" style="border-bottom:none;">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Field note — Get in touch</div>
+          <h2>Let's talk research or collaboration</h2>
+          <p>Open to research collaboration, consultancy, postgraduate supervision enquiries and speaking invitations.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-links reveal">
+            <div class="contact-row">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 7l9 6 9-6" />
+                </svg></div>
+              <div>
+                <div class="lbl">Email</div><a class="val" href="mailto:dkariuki@chuka.ac.ke">dkariuki@chuka.ac.ke</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="ic" style="background:#dcfce7;color:#16a34a;"><svg viewBox="0 0 24 24" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg></div>
+              <div>
+                <div class="lbl">WhatsApp</div><a class="val" href="https://wa.me/254768730777" target="_blank"
+                  rel="noopener">+254 768 730 777</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <path d="M7 10v7M7 7v.01M12 17v-4.5a2 2 0 0 1 4 0V17M12 17v-7" stroke-linecap="round" />
+                </svg></div>
+              <div>
+                <div class="lbl">LinkedIn</div><a class="val"
+                  href="https://www.linkedin.com/in/dennis-k-muriithi-6768414a/" target="_blank"
+                  rel="noopener">dennis-k-muriithi</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path
+                    d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" />
+                </svg></div>
+              <div>
+                <div class="lbl">GitHub</div><a class="val" href="https://github.com/kamuriithi" target="_blank"
+                  rel="noopener">github.com/kamuriithi</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z" />
+                </svg></div>
+              <div>
+                <div class="lbl">CDAM website</div><a class="val" href="https://cdam.chuka.ac.ke/" target="_blank"
+                  rel="noopener">cdam.chuka.ac.ke</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg></div>
+              <div>
+                <div class="lbl">Location</div><span class="val">Chuka, Kenya — Box 109-60400</span>
+              </div>
+            </div>
+          </div>
+
+          <form class="reveal" id="contactForm">
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="fname">Name</label>
+                <input type="text" id="fname" name="name" placeholder="Your full name" required>
+              </div>
+              <div class="form-field">
+                <label for="femail">Email</label>
+                <input type="email" id="femail" name="email" placeholder="name@example.com" required>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="fsubject">Subject</label>
+              <input type="text" id="fsubject" name="subject" placeholder="What's this about?" required>
+            </div>
+            <div class="form-field">
+              <label for="fmessage">Message</label>
+              <textarea id="fmessage" name="message" rows="5"
+                placeholder="Tell me a bit about the collaboration or question" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send
+              Message</button>
+            <p class="form-note">This form opens your email client with the message pre-filled. To send messages
+              directly without an email client, connect an EmailJS service ID, template ID and public key inside
+              script.js.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <span class="logo-mark">DK</span>
+          <div>
+            <div style="font-family:var(--font-display);font-weight:600;">Dennis K. Muriithi</div>
+            <div style="font-size:13px;color:#8B9587;">Statistician &amp; Data Scientist</div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Navigate</h5>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+          </div>
+          <div class="footer-col">
+            <h5>Work</h5>
+            <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h5>Elsewhere</h5>
+            <a href="https://github.com/kamuriithi" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/dennis-k-muriithi-6768414a/" target="_blank"
+              rel="noopener">LinkedIn</a>
+            <a href="https://cdam.chuka.ac.ke/" target="_blank" rel="noopener">CDAM</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© <span id="year"></span> Dennis K. Muriithi. All rights reserved.</div>
+        <div class="footer-socials">
+          <a href="mailto:dkariuki@chuka.ac.ke" aria-label="Email"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="M3 7l9 6 9-6" />
+            </svg></a>
+          <a href="https://www.linkedin.com/in/dennis-k-muriithi-6768414a/" target="_blank" rel="noopener"
+            aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <path d="M7 10v7M7 7v.01M12 17v-4.5a2 2 0 0 1 4 0V17M12 17v-7" stroke-linecap="round" />
+            </svg></a>
+          <a href="https://github.com/kamuriithi" target="_blank" rel="noopener" aria-label="GitHub"><svg
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path
+                d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" />
+            </svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+
+  <script>
+    // ---------- Theme toggle ----------
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function applyTheme(mode) {
+      if (mode === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+        themeIcon.innerHTML = '<path d="M21 12.5A9 9 0 1 1 11.5 3a7 7 0 0 0 9.5 9.5z" stroke-linecap="round" stroke-linejoin="round"/>';
+      } else {
+        root.removeAttribute('data-theme');
+        themeIcon.innerHTML = '<circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8" stroke-linecap="round"/>';
+      }
+    }
+
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem('dkm-theme'); } catch (e) { }
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('dkm-theme', next); } catch (e) { }
+    });
+
+    // ---------- Mobile menu ----------
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    menuToggle.addEventListener('click', () => {
+      mobilePanel.classList.toggle('open');
+    });
+    mobilePanel.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobilePanel.classList.remove('open'));
+    });
+
+    // ---------- Active nav link on scroll ----------
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href')));
+
+    function updateActiveNav() {
+      let currentId = null;
+      const scrollPos = window.scrollY + 140;
+      sections.forEach(sec => {
+        if (sec && sec.offsetTop <= scrollPos) {
+          currentId = '#' + sec.id;
+        }
+      });
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === currentId));
+    }
+
+    // ---------- Header scroll state + scroll progress ----------
+    const header = document.getElementById('siteHeader');
+    const progressBar = document.getElementById('progressBar');
+    const backTop = document.getElementById('backTop');
+
+    function onScroll() {
+      const scrollTop = window.scrollY;
+      header.classList.toggle('scrolled', scrollTop > 10);
+      backTop.classList.toggle('show', scrollTop > 500);
+
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+
+      updateActiveNav();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ---------- Typing effect ----------
+    const roles = [
+      'Statistician',
+      'Data Scientist',
+      'AI Researcher'
+    ];
+    const typedEl = document.getElementById('typedText');
+    let roleIndex = 0, charIndex = 0, deleting = false;
+    typedEl.textContent = '';
+
+    function typeLoop() {
+      const current = roles[roleIndex];
+      if (!deleting) {
+        charIndex++;
+        typedEl.textContent = current.slice(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(typeLoop, 1400);
+          return;
+        }
+      } else {
+        charIndex--;
+        typedEl.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+      setTimeout(typeLoop, deleting ? 40 : 75);
+    }
+    typeLoop();
+
+    // ---------- Scroll reveal (progressive enhancement: content is visible by
+    // default in CSS; this only adds the fade-in effect when JS + IntersectionObserver work) ----------
+    if ('IntersectionObserver' in window) {
+      const revealEls = document.querySelectorAll('.reveal');
+      revealEls.forEach(el => el.classList.add('pre'));
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => revealObserver.observe(el));
+    }
+
+    // ---------- Animated counters ----------
+    if ('IntersectionObserver' in window) {
+      const counters = document.querySelectorAll('[data-count]');
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-count'), 10);
+            const duration = 1400;
+            const start = performance.now();
+            function step(now) {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              el.textContent = Math.round(eased * target);
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                el.textContent = target;
+              }
+            }
+            requestAnimationFrame(step);
+            counterObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.4 });
+      counters.forEach(el => counterObserver.observe(el));
+    }
+
+    // ---------- Project filter ----------
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const show = filter === 'all' || card.getAttribute('data-cat') === filter;
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+
+    // ---------- Contact form ----------
+    const contactForm = document.getElementById('contactForm');
+    
+    // Create a response message element dynamically
+    const formResponse = document.createElement('p');
+    formResponse.style.marginTop = '14px';
+    formResponse.style.fontSize = '14px';
+    contactForm.appendChild(formResponse);
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      formResponse.textContent = '';
+
+      const formData = new FormData(contactForm);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          formResponse.style.color = 'var(--teal)';
+          formResponse.textContent = "Message sent successfully!";
+          contactForm.reset();
+        } else {
+          console.error(response);
+          formResponse.style.color = 'var(--terracotta)';
+          formResponse.textContent = json.message || "Something went wrong!";
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        formResponse.style.color = 'var(--terracotta)';
+        formResponse.textContent = "Something went wrong!";
+      })
+      .then(() => {
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+        setTimeout(() => {
+          formResponse.textContent = '';
+        }, 5000);
+      });
+    });
+
+    // ---------- Footer year ----------
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
