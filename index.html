@@ -69,13 +69,13 @@
     :root {
       --ink: #122019;
       --ink-soft: #3c4a43;
-      --paper: #F1F4EF;
+      --paper: #FFFFFF;
       --paper-raised: #FFFFFF;
       --line: #D8DDD3;
       --line-strong: #B9C1B3;
-      --teal: #0B6E5C;
-      --teal-deep: #084A3F;
-      --teal-tint: #E1F0EC;
+      --teal: #D62828;
+      --teal-deep: #9E1B1B;
+      --teal-tint: #FBE1DE;
       --terracotta: #C1592E;
       --terracotta-tint: #F7E7DE;
       --gold: #C79A3D;
@@ -1753,6 +1753,13 @@
             </thead>
             <tbody>
               <tr>
+                <td>European Union — Global Health EDCTP3 Grant. One Collaborative Training Program for Outbreak
+                  Preparedness and Universal Surveillance (OCTOPUS)</td>
+                <td>Co-Principal Investigator</td>
+                <td>2026 – 2028</td>
+                <td class="amt">€1,299,926</td>
+              </tr>
+              <tr>
                 <td>AMMnet Travel Grant Award - Annual AMMnet meeting/training held in Dakar, Senegal, June 25-27,
                   Basics: Introduction to R and data visualization</td>
                 <td>Trainer</td>
@@ -1889,7 +1896,7 @@
             <div class="stat-lbl">International conferences</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num"><span data-count="85">85</span><span class="suffix">K</span></div>
+            <div class="stat-num"><span data-count="1.6">1.6</span><span class="suffix">M</span></div>
             <div class="stat-lbl">USD in research grants</div>
           </div>
           <div class="stat-card">
@@ -1897,7 +1904,7 @@
             <div class="stat-lbl">Top researcher rank, Chuka University</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num" data-count="9">9</div>
+            <div class="stat-num" data-count="10">10</div>
             <div class="stat-lbl">Active research grants led</div>
           </div>
           <div class="stat-card">
@@ -2389,17 +2396,18 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const el = entry.target;
-            const target = parseInt(el.getAttribute('data-count'), 10);
+            const target = parseFloat(el.getAttribute('data-count'));
+            const decimals = el.getAttribute('data-count').includes('.') ? 1 : 0;
             const duration = 1400;
             const start = performance.now();
             function step(now) {
               const progress = Math.min((now - start) / duration, 1);
               const eased = 1 - Math.pow(1 - progress, 3);
-              el.textContent = Math.round(eased * target);
+              el.textContent = (eased * target).toFixed(decimals);
               if (progress < 1) {
                 requestAnimationFrame(step);
               } else {
-                el.textContent = target;
+                el.textContent = target.toFixed(decimals);
               }
             }
             requestAnimationFrame(step);
